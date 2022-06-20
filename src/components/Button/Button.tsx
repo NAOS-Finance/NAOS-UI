@@ -25,7 +25,7 @@ import styled from 'styled-components'
 //   margin-left: ${(props) => (props.marginLeft === undefined ? '0' : props.marginLeft)};
 // `
 
-interface ButtonProps {
+export interface ButtonProps {
   label: string
 }
 

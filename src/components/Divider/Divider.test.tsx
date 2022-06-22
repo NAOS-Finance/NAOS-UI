@@ -5,6 +5,6 @@ import Divider from './Divider'
 
 describe('Divider', () => {
   test('renders the Divider component', () => {
-    render(<Divider style={{ height: '5px' }} />)
+    render(<Divider width="50px" height="2px" />)
   })
 })

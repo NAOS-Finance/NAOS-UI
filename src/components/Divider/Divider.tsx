@@ -1,19 +1,15 @@
-import React from 'react'
-import styled, { ThemeProps } from 'styled-components'
+import styled from 'styled-components'
 
-const DividerStyled = styled.div`
+const Divider = styled.div<{
+  width?: string
+  height?: string
+  marginTop?: string
+  marginBottom?: string
+}>`
   background: ${({ theme }) => (theme?.colors?.text ? theme?.colors?.text : 'gray')};
-  height: 1px;
-  width: 80%;
+  width: ${({ width }) => (width ? width : '1px')};
+  height: ${({ height }) => (height ? height : '80%')};
   margin: 50px auto;
 `
-
-export interface DividerProps {
-  style?: React.CSSProperties
-}
-
-const Divider = ({ style }: DividerProps) => {
-  return <DividerStyled style={style}></DividerStyled>
-}
 
 export default Divider

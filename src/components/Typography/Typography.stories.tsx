@@ -17,5 +17,5 @@ export const Default = Template.bind({})
 
 Default.args = {
   children: 'Hello world!',
-  variant: 'h1',
+  variant: 'h2',
 }

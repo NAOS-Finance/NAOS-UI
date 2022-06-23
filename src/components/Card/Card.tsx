@@ -1,15 +1,33 @@
+import React from 'react'
+import { useState } from 'react'
 import styled from 'styled-components'
+import { BasicDivStyled, BasicProps } from '../Basic/Basic'
 
-const Card = styled.div<{
-  width?: string
-  height?: string
-  marginTop?: string
-  marginBottom?: string
-}>`
-  background: ${({ theme }) => (theme?.colors?.text ? theme?.colors?.text : 'gray')};
-  width: ${({ width }) => (width ? width : '1px')};
-  height: ${({ height }) => (height ? height : '80%')};
-  margin: 50px auto;
+const ExtendCard = ({}) => {}
+
+interface CardStyledProps extends BasicProps {
+  minWidth?: string
+  minHeight?: string
+}
+
+const CardStyled = styled(BasicDivStyled)<CardStyledProps>`
+  background: ${({ theme }) => theme?.colors?.backgroundColor ?? '#F6F6F6'};
+  min-width: ${({ minWidth }) => minWidth ?? '300px'};
+  min-height: ${({ minHeight }) => minHeight ?? '168px'};
+  display: flex;
 `
+
+export interface CardProps extends CardStyledProps {
+  style?: React.CSSProperties
+  children?: React.ReactNode
+}
+
+const Card = (props: CardProps) => {
+  return (
+    <CardStyled {...props} style={props.style}>
+      {props.children}
+    </CardStyled>
+  )
+}
 
 export default Card

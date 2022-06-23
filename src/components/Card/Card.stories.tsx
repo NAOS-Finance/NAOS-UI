@@ -14,8 +14,7 @@ const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />
 export const CommonCard = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 CommonCard.args = {
-  width: '50px',
-  height: '3px',
+  children: 'my card',
 }
 
 export const RedCard = Template.bind({})

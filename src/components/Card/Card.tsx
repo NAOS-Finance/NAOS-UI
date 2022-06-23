@@ -3,8 +3,6 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import { BasicDivStyled, BasicProps } from '../Basic/Basic'
 
-const ExtendCard = ({}) => {}
-
 interface CardStyledProps extends BasicProps {
   minWidth?: string
   minHeight?: string

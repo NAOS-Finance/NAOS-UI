@@ -3,7 +3,7 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import { BasicDivStyled, BasicProps } from '../Basic/Basic'
 
-interface CardStyledProps extends BasicProps {
+export interface CardStyledProps extends BasicProps {
   minWidth?: string
   minHeight?: string
 }
@@ -15,15 +15,17 @@ const CardStyled = styled(BasicDivStyled)<CardStyledProps>`
   display: flex;
 `
 
-export interface CardProps extends CardStyledProps {
+const Card = ({
+  children,
+  style,
+  ...rest
+}: {
   style?: React.CSSProperties
   children?: React.ReactNode
-}
-
-const Card = (props: CardProps) => {
+} & CardStyledProps) => {
   return (
-    <CardStyled {...props} style={props.style}>
-      {props.children}
+    <CardStyled {...rest} style={style}>
+      {children}
     </CardStyled>
   )
 }

@@ -28,7 +28,7 @@ export interface ButtonProps {
 }
 
 const Button = ({radius, isActive, style, children}: ButtonProps) => {
-  return <ButtonStyled radius={radius} isActive={isActive} style={style}>{children}</ButtonStyled>
+  return <ButtonStyled  radius={radius} isActive={isActive} style={style}>{children}</ButtonStyled>
 }
 
 export default Button

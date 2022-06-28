@@ -9,9 +9,9 @@ export interface ModalStyledProps extends BasicProps {
 }
 
 export enum ModalSize {
-  SMALL,
-  MEDIUM,
-  LARGE,
+  SMALL = 'sm',
+  MEDIUM = 'm',
+  LARGE = 'l',
 }
 
 /**
@@ -42,32 +42,47 @@ const DefaultCardSetting: Map<ModalSize, ModalStyledProps> = new Map([
 ])
 
 const ModalStyled = styled(BasicDivStyled)<ModalStyledProps>`
-  background: ${({ theme }) => theme?.colors?.backgroundColor ?? '#F6F6F6'};
+  background: ${({ theme }) => (theme?.colors?.text ? theme?.colors?.text : 'white')};
   max-width: ${({ maxWidth }) => maxWidth ?? '300px'};
   min-height: ${({ minHeight }) => minHeight ?? '168px'};
+  padding: 5px;
+`
+
+const ModalBackground = styled('div')<{}>`
+  width: 100%;
+  height: 100%;
+  position: fixed;
   display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 10;
 `
 
 const Modal = ({
   children,
   style,
+  backgoundStyle,
   size = ModalSize.MEDIUM,
   ...rest
 }: {
   style?: React.CSSProperties
   children?: React.ReactNode
   size?: ModalSize
+  backgoundStyle?: React.CSSProperties
 } & ModalStyledProps) => {
   let setting = DefaultCardSetting.get(size)
+
   if (!setting) {
     console.warn('Component/Modal: setting error')
     return null
   }
   setting = { ...setting, ...rest }
   return (
-    <ModalStyled {...setting} style={style}>
-      {children}
-    </ModalStyled>
+    <ModalBackground style={backgoundStyle}>
+      <ModalStyled {...setting} style={style}>
+        {children}
+      </ModalStyled>
+    </ModalBackground>
   )
 }
 

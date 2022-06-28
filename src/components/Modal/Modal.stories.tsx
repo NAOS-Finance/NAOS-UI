@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Modal from './Modal'
+import Modal, { ModalSize } from './Modal'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -13,16 +13,19 @@ const Template: ComponentStory<typeof Modal> = (args) => <Modal {...args} />
 
 export const CommonModal = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-CommonModal.args = {
-  width: '50px',
-  height: '3px',
+CommonModal.args = {}
+
+export const SmallModal = Template.bind({})
+SmallModal.args = {
+  size: ModalSize.SMALL,
+  children: 'Small Modal',
 }
 
-export const RedModal = Template.bind({})
-RedModal.args = {
-  width: '150px',
-  height: '5px',
-  style: {
-    background: 'red',
+export const IndexModal = Template.bind({})
+SmallModal.args = {
+  size: ModalSize.MEDIUM,
+  children: 'IndexModal',
+  backgoundStyle: {
+    backgroundColor: 'rgba(0, 0, 0, 0.36)',
   },
 }

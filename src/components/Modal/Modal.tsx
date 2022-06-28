@@ -8,7 +8,7 @@ export interface ModalStyledProps extends BasicProps {
   minHeight?: string
 }
 
-enum ModalSize {
+export enum ModalSize {
   SMALL,
   MEDIUM,
   LARGE,

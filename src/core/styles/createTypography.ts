@@ -59,7 +59,7 @@ export interface TypographyUtils {
   pxToRem: (px: number) => string
 }
 
-export interface Typography extends Record<Variant, TypographyStyle>, FontStyle, TypographyUtils {}
+export interface TypographyFull extends Record<Variant, TypographyStyle>, FontStyle, TypographyUtils {}
 export interface TypographyOptions extends Partial<Record<Variant, TypographyStyleOptions> & FontStyleOptions> {}
 
 const defaultFontFamily = '"Roboto", "Helvetica", "Arial", sans-serif'
@@ -72,7 +72,7 @@ const caseAllCaps = {
   textTransform: 'uppercase',
 }
 
-export default function createTypography(typography: TypographyOptions): Typography {
+export default function createTypography(typography: TypographyOptions): TypographyFull {
   const {
     fontFamily = defaultFontFamily,
     // The default font size of the Material Specification.

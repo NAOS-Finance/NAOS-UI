@@ -1,12 +1,13 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { BasicProps, BasicDivStyled } from '../Basic/Basic'
-import createTypography, { Typography as TypographyStyle, Variant } from '../../core/styles/createTypography'
+import { Variant } from '../../core/styles/createTypography'
+import createTheme, { Theme } from '../../core/styles/createTheme'
 
-const defaultTypographyTheme = createTypography({})
+const defaultTheme = createTheme()
 
 interface TypographyStyledProps extends BasicProps {
-  typographyStyle: TypographyStyle
+  themeStyle: Theme
   variant?: Variant
   color?: string
   align?: string
@@ -27,14 +28,14 @@ const TypographyStyled = styled(BasicDivStyled)<TypographyStyledProps>((props) =
       paddingRight: props.padingRight === undefined ? '16px' : props.padingRight,
       paddingBottom: props.padingBottom === undefined ? '0' : props.padingBottom,
       paddingLeft: props.padingLeft === undefined ? '16px' : props.padingLeft,
-      fontFamily: props.typographyStyle.fontFamily,
-      fontSize: props.typographyStyle.fontSize,
-      fontWeight: props.typographyStyle.fontWeightLight,
+      fontFamily: props.themeStyle.typography.fontFamily,
+      fontSize: props.themeStyle.typography.fontSize,
+      fontWeight: props.themeStyle.typography.fontWeightLight,
     }
   } else {
     const typographyStyledObject: Record<string, string | number> = {}
-    Object.keys(props.typographyStyle[props.variant]).forEach((key) => {
-      typographyStyledObject[key] = props.typographyStyle[props.variant as Variant][key] as string | number
+    Object.keys(props.themeStyle.typography[props.variant]).forEach((key) => {
+      typographyStyledObject[key] = props.themeStyle.typography[props.variant as Variant][key] as string | number
     })
 
     return {
@@ -52,24 +53,24 @@ const TypographyStyled = styled(BasicDivStyled)<TypographyStyledProps>((props) =
 })
 
 export interface TypographyProps extends Omit<TypographyStyledProps, 'typographyStyle'>  {
-  themeContext?: React.Context<TypographyStyle>
+  themeContext?: React.Context<Theme>
   style?: React.CSSProperties
   children?: React.ReactNode
 }
 
 const Typography = ({ style, children, themeContext, ...rest }: TypographyProps) => {
   if (themeContext !== undefined) {
-    const theme: TypographyStyle = useContext<TypographyStyle>(themeContext)
+    const theme: Theme = useContext<Theme>(themeContext)
 
     return (
-      <TypographyStyled {...rest} style={style} typographyStyle={theme}>
+      <TypographyStyled {...rest} style={style} themeStyle={theme}>
         {children}
       </TypographyStyled>
     )
   }
 
   return (
-    <TypographyStyled {...rest} style={style} typographyStyle={defaultTypographyTheme}>
+    <TypographyStyled {...rest} style={style} themeStyle={defaultTheme}>
       {children}
     </TypographyStyled>
   )

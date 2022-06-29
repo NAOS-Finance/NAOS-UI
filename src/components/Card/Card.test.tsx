@@ -10,9 +10,9 @@ describe('Card1', () => {
 })
 
 describe('Card12', () => {
-  test('renders the Card1 component', () => {
+  test('renders the Card12 component', () => {
     render(
-      <Card minWidth={'100px'}>
+      <Card maxWidth={'100px'}>
         <button>CLick</button>my card2
       </Card>
     )

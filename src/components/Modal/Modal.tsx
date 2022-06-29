@@ -61,14 +61,16 @@ const ModalBackground = styled('div')<{}>`
 const Modal = ({
   children,
   style,
-  backgoundStyle,
+  backgroundStyle,
+  backroundClickEvent,
   size = ModalSize.MEDIUM,
   ...rest
 }: {
   style?: React.CSSProperties
   children?: React.ReactNode
   size?: ModalSize
-  backgoundStyle?: React.CSSProperties
+  backgroundStyle?: React.CSSProperties
+  backroundClickEvent?: Function
 } & ModalStyledProps) => {
   let setting = DefaultCardSetting.get(size)
 
@@ -77,8 +79,13 @@ const Modal = ({
     return null
   }
   setting = { ...setting, ...rest }
+
+  const handleBackgroundClick = () => {
+    backroundClickEvent?.()
+  }
+
   return (
-    <ModalBackground style={backgoundStyle}>
+    <ModalBackground style={backgroundStyle} onClick={handleBackgroundClick}>
       <ModalStyled {...setting} style={style}>
         {children}
       </ModalStyled>

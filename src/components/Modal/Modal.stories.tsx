@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Modal, { ModalSize } from './Modal'
 
@@ -21,11 +21,51 @@ SmallModal.args = {
   children: 'Small Modal',
 }
 
-export const IndexModal = Template.bind({})
-SmallModal.args = {
+export const backgroundModal = Template.bind({})
+backgroundModal.args = {
   size: ModalSize.MEDIUM,
   children: 'IndexModal',
-  backgoundStyle: {
+  backgroundStyle: {
     backgroundColor: 'rgba(0, 0, 0, 0.36)',
   },
+}
+
+export const buttonCloseModal = () => {
+  const [openModal, setOpenModeal] = useState<boolean>(false)
+
+  return (
+    <div>
+      <button onClick={() => setOpenModeal(true)}>Open</button>
+      {openModal && (
+        <Modal
+          backgroundStyle={{
+            backgroundColor: 'rgba(0, 0, 0, 0.36)',
+          }}
+        >
+          <button onClick={() => setOpenModeal(false)}>close</button>
+          -----Test Modal Content-----
+        </Modal>
+      )}
+    </div>
+  )
+}
+
+export const backgroundCloseModal = () => {
+  const [openModal, setOpenModeal] = useState<boolean>(false)
+
+  return (
+    <div>
+      <button onClick={() => setOpenModeal(true)}>Open</button>
+      {openModal && (
+        <Modal
+          backgroundStyle={{
+            backgroundColor: 'rgba(0, 0, 0, 0.36)',
+          }}
+          backroundClickEvent={() => setOpenModeal(false)}
+        >
+          -----click background to close modal-----
+        </Modal>
+      )}
+    </div>
+  )
 }

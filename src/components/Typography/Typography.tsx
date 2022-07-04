@@ -1,8 +1,9 @@
-import React, { useContext } from 'react'
+import React, { useContext, createContext } from 'react'
 import styled from 'styled-components'
 import { BasicProps, BasicDivStyled } from '../Basic/Basic'
 import { Variant } from '../../core/styles/createTypography'
 import createTheme, { Theme } from '../../core/styles/createTheme'
+import { ThemeContext } from '../ThemeProvider/ThemeProvider'
 
 const defaultTheme = createTheme()
 
@@ -52,15 +53,14 @@ const TypographyStyled = styled(BasicDivStyled)<TypographyStyledProps>((props) =
   }
 })
 
-export interface TypographyProps extends Omit<TypographyStyledProps, 'typographyStyle'>  {
-  themeContext?: React.Context<Theme>
+export interface TypographyProps extends Omit<TypographyStyledProps, 'themeStyle'>  {
   style?: React.CSSProperties
   children?: React.ReactNode
 }
 
-const Typography = ({ style, children, themeContext, ...rest }: TypographyProps) => {
-  if (themeContext !== undefined) {
-    const theme: Theme = useContext<Theme>(themeContext)
+const Typography = ({ style, children, ...rest }: TypographyProps) => {
+  if (ThemeContext !== undefined) {
+    const theme: Theme = useContext<Theme>(ThemeContext)
 
     return (
       <TypographyStyled {...rest} style={style} themeStyle={theme}>

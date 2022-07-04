@@ -8,7 +8,7 @@ export interface CardStyledProps extends BasicProps {
   minHeight?: string
 }
 
-enum CardSize {
+export enum CardSize {
   SMALL,
   MEDIUM,
   LARGE,

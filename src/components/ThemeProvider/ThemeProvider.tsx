@@ -1,7 +1,9 @@
 import React, { createContext } from 'react'
-import { Theme } from '../../core/styles/createTheme'
+import createTheme, { Theme } from '../../core/styles/createTheme'
 
-export const ThemeContext = createContext<Theme | null>(null)
+const defaultTheme = createTheme()
+
+export const ThemeContext = createContext<Theme>(defaultTheme)
 
 export interface ThemeProviderProps {
   theme?: Theme
@@ -9,7 +11,7 @@ export interface ThemeProviderProps {
 }
 
 const ThemeProvider = ({ children, theme }: ThemeProviderProps) => {
-  return <ThemeContext.Provider value={theme ?? null}>{children}</ThemeContext.Provider>
+  return <ThemeContext.Provider value={theme ?? defaultTheme}>{children}</ThemeContext.Provider>
 }
 
 export default ThemeProvider

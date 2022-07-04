@@ -1,4 +1,4 @@
-import { Typography, TypographyOptions } from './createTypography'
+import { TypographyFull, TypographyOptions } from './createTypography'
 import createTypography from './createTypography'
 
 export interface ThemeOptions {
@@ -8,7 +8,7 @@ export interface ThemeOptions {
 
 export interface Theme {
   // palette: Record<string, Record<string, string> | string>
-  typography: Typography
+  typography: TypographyFull
 }
 
 export default function createTheme(options?: ThemeOptions, ...args: object[]): Theme {

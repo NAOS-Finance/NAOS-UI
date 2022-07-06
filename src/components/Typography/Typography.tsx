@@ -7,7 +7,7 @@ import { ThemeContext } from '../ThemeProvider/ThemeProvider'
 
 const defaultTheme = createTheme()
 
-interface TypographyStyledProps extends BasicProps {
+interface TypographyStyledProps extends Omit<BasicProps, 'onClick'> {
   themeStyle: Theme
   variant?: Variant
   color?: string

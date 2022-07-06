@@ -9,7 +9,7 @@ export interface ButtonStyledProps extends BasicProps {
 
 const ButtonStyled = styled(BasicButtonStyled)<ButtonStyledProps>`
   border: none;
-  border-radius: ${(props) => (props.radius === undefined ? '50%' : props.radius)};
+  border-radius: ${(props) => (props.radius === undefined ? '0px' : props.radius)};
   display: flex;
   justify-content: center;
   align-items: center;

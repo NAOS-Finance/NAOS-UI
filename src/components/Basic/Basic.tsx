@@ -8,6 +8,7 @@ export interface BasicProps {
   marginRight?: string
   marginBottom?: string
   marginLeft?: string
+  onClick?: () => void
 }
 
 export const BasicDivStyled = styled.div<BasicProps>`

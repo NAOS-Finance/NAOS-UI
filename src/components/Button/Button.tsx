@@ -13,6 +13,7 @@ const ButtonStyled = styled(BasicButtonStyled)<ButtonStyledProps>`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   background-color: ${(props) => (props.isActive ? props.theme?.bgColor?.active : props.theme?.bgColor?.inactive)};
 `
 
